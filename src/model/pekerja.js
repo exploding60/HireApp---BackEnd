@@ -6,9 +6,9 @@ const Pool = require("./../config/db");
 // }
 
 const insertData = (data) => {
-  const { id, name, password, email, phonenumber, auth } = data;
+  const { name, password, email, phonenumber, auth } = data;
   return Pool.query(
-    `INSERT INTO pekerja(id,name,password,email,phonenumber,auth) VALUES(${id},'${name}','${password}','${email}',${phonenumber},${auth})`
+    `INSERT INTO pekerja(name,password,email,phonenumber,auth) VALUES('${name}','${password}','${email}',${phonenumber},${auth})`
   );
 };
 
