@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const cors = require("cors")
+require("dotenv").config();
+const port = 3002;
+var bodyParser = require('body-parser')
+const morgan = require("morgan")
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
