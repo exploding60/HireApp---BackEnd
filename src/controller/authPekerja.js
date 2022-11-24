@@ -55,7 +55,7 @@ const UsersController = {
     delete user.password;
     let payload = {
       email: user.email,
-      profile: user.profile,
+      id: user.id,
     };
     user.token = generateToken(payload);
     response(res, 200, true, user, "login berhasil");
