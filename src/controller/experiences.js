@@ -3,15 +3,15 @@ const { response } = require("./../middlewares/common");
 const jwt = require("jsonwebtoken");
 
 const ModelExperiences = require("./../model/experiences");
-
+const key = process.env.JWT_KEY;
 const experiencesControl = {
   insert: async (req, res, next) => {
     try {
       const { role, company_name, description, join_date } = req.body;
-      //   const token = req.headers.authorization.split("");
-
-      //   const decode = jwt.verify(token, process.env.JWT_KEY);
-      const id_pekerja = "asasasasasa";
+      let auth = req.headers.authorization;
+      let token = auth.split(" ")[1];
+      let decode = jwt.verify(token, key);
+      const id_pekerja = decode.id;
 
       const data = {
         role,
