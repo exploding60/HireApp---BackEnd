@@ -4,7 +4,7 @@ const PerekrutController = {
     insert: (req,res,next)=>{
                 ModelPerekrut.insertData(req.body)
                 .then((result) =>
-                response(res, 200, true, result, "input data success"))
+                response(res, 200, true, result.command, "input data success"))
                 .catch((err) =>response(res, 404, false, err, "input data fail"))
             },
     getPerekrut: (req,res,next)=>{
