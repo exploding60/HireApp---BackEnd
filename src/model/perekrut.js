@@ -49,4 +49,11 @@ const create = (data) => {
       )
     );
   };
-module.exports = {getPerekrut,create,findEmail,verification}
+
+  const updatePerusahaan = (id, data) => {
+    const { nama_perusahaan, bidang, kota, deskripsi_singkat, email_perusahaan,instagram_perusahaan,nomortelp_perusahaan,linkedin_perusahaan } = data;
+    return Pool.query(
+      `UPDATE perekrut SET nama_perusahaan='${nama_perusahaan}',bidang='${bidang}',kota='${kota}', deskripsi_singkat='${deskripsi_singkat}',email_perusahaan='${email_perusahaan}',instagram_perusahaan='${instagram_perusahaan}',nomortelp_perusahaan='${nomortelp_perusahaan}',linkedin_perusahaan='${linkedin_perusahaan}' WHERE id='${id}'`
+    );
+  };
+module.exports = {getPerekrut,create,findEmail,verification,updatePerusahaan}

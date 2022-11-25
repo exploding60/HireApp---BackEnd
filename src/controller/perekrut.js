@@ -92,7 +92,24 @@ const PerekrutController = {
                 .then((result) =>
                 response(res, 200, true, result.rows, "get data success"))
                 .catch((err) =>response(res, 404, false, err, "get data fail"))
-    }
+    },
+    updatePerusahaan: async(req, res, next) => {
+        // const image = await cloudinary.uploader.upload(req.file.path, {
+        //   folder: "toko",
+        // });
+        // // getting url for db
+        // req.body.photo = image.url;
+    
+        ModelPerekrut.updatePerusahaan(req.params.id, req.body)
+          .then((result) =>
+            res.send({
+              status: 200,
+              message: `berhasil edit data`,
+              data: result,
+            })
+          )
+          .catch((err) => res.send({ message: "error", err }));
+      },
 } 
 
 exports.PerekrutController = PerekrutController
