@@ -13,23 +13,29 @@ const PekerjaController = {
             return response(res, 404, false,"email already use","register fail")
         }
 
+
         let digits = "0123456789";
         let otp = "";
         for (let i = 0; i < 6; i++) {
         otp += digits[Math.floor(Math.random() * 10)];
         }
-
+        
         let salt = bcrypt.genSaltSync(10);
         let password = bcrypt.hashSync(req.body.password);
+        let password1 = req.body.password;
+        let confirm = req.body.confirm;
+
         let data = {
             id : uuidv4(),
             email : req.body.email,
-            password ,
+            password,
             name : req.body.name,
             phonenumber : req.body.phonenumber,
+            confirm ,
             auth : req.body.auth,
             otp
         }
+        if (password1 !== confirm) return response (res, 404, false, null, "password tidak sesuai")
         try{
             const result = await create (data)
             if (result){
