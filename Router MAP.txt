@@ -1,0 +1,22 @@
+Register:
+----------------------------Pekerja---------------------------
+Pekerja : localhost:3002/register/pekerja
+Body Text = { "name":"rizky",
+    "email": "flz10700@xcoxc.com",
+    "password": "123456",
+    "phonenumber": "0837373733"}
+
+----------------------------Perekrut----------------------------
+Pekerja : localhost:3002/register/pekerja
+BodyText
+{
+    "name":"rizky",
+    "email": "ijw92843@cdfaq.com",
+    "password": "123456",
+    "phonenumber": "0837373733",
+    "company_name": "PT Mencari",
+    "jabatan": "HRD"
+
+}
+
+----------------------------------Login---------------------------------

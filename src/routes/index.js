@@ -4,9 +4,9 @@ const UsersRouter = require("./../routes/users");
 const PekerjaRouter = require("../routes/pekerja");
 const PerekrutRouter = require("../routes/perekrut");
 const ExperiencesRouter = require("../routes/experiences");
-const Users2Router = require("./../routes/users2")
+const Users2Router = require("../routes/registerUsers");
 router
-  .use("/users2",Users2Router)
+  .use("/register", Users2Router)
   .use("/users", UsersRouter)
   .use("/pekerja", PekerjaRouter)
   .use("/perekrut", PerekrutRouter)
