@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { UsersController } = require("../controller/authPekerja");
-const { profile } = require("./../middlewares/auth");
+const { profile } = require("../middlewares/auth");
 //router.post('/register/:profile',profile, UsersController.insert);
 router.post("/login", UsersController.login);
 //router.get('/:email/:otp', UsersController.otp);

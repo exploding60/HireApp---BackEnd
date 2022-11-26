@@ -14,6 +14,43 @@ const insertWork = ({
   );
 };
 
+const updateWork = (id, data) => {
+  const { role, company_name, description, join_date } = data;
+  return Pool.query(
+    `UPDATE work_experiences SET role='${role}',company_name='${company_name}',description='${description}',join_date='${join_date}' WHERE id_work ='${id}'`
+  );
+};
+
+const detailWork = (id) => {
+  return Pool.query(
+    `SELECT role,company_name,description,join_date FROM work_experiences WHERE id_work = '${id}'`
+  );
+};
+
+const getAllWork = ({ id }) => {
+  return new Promise((resolve, reject) => {
+    Pool.query(
+      `SELECT id_work,role,company_name,description,join_date FROM work_experiences WHERE id_pekerja = '${id}'`,
+      (err, result) => {
+        if (!err) {
+          resolve(result.rows);
+        } else {
+          reject(new Error(err));
+        }
+      }
+    );
+  });
+
+  // return new Promise((resolve, reject) => {
+  //   Pool.query(
+  //     `SELECT id_work,role,company_name,description,join_date FROM work_experiences WHERE id_pekerja = '${id}
+  //     }'`
+  //   );
+  // });
+};
 module.exports = {
   insertWork,
+  updateWork,
+  detailWork,
+  getAllWork,
 };
