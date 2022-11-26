@@ -18,16 +18,13 @@ const create = (data) => {
 
 const findEmail = (email) => {
   return new Promise((resolve, reject) =>
-    Pool.query(
-      `SELECT * FROM pekerja where email='${email}'`,
-      (err, result) => {
-        if (!err) {
-          resolve(result);
-        } else {
-          reject(err);
-        }
+    Pool.query(`SELECT * FROM users where email='${email}'`, (err, result) => {
+      if (!err) {
+        resolve(result);
+      } else {
+        reject(err);
       }
-    )
+    })
   );
 };
 

@@ -56,6 +56,7 @@ const UsersController = {
     let payload = {
       email: user.email,
       id: user.id,
+      role: user.role,
     };
     user.token = generateToken(payload);
     response(res, 200, true, user, "login berhasil");

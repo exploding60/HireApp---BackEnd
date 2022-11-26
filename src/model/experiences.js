@@ -8,7 +8,7 @@ const insertWork = ({
   id_pekerja,
 }) => {
   return Pool.query(
-    "INSERT INTO work_experiences(role,company_name,description,join_date,id_pekerja) VALUES ($1,$2,$3,$4,$5)",
+    "INSERT INTO work_experiences(role,company_name,description,join_date,id_users) VALUES ($1,$2,$3,$4,$5)",
     [role, company_name, description, join_date, id_pekerja]
     // `INSERT INTO work_experiences(role,company_name,description,join_date,id_pekerja) VALUES ('${role}','${company_name}','${description}','${join_date}','${id_pekerja}')`
   );
@@ -30,7 +30,7 @@ const detailWork = (id) => {
 const getAllWork = ({ id }) => {
   return new Promise((resolve, reject) => {
     Pool.query(
-      `SELECT id_work,role,company_name,description,join_date FROM work_experiences WHERE id_pekerja = '${id}'`,
+      `SELECT id_work,role,company_name,description,join_date FROM work_experiences WHERE id_users = '${id}'`,
       (err, result) => {
         if (!err) {
           resolve(result.rows);

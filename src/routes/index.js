@@ -5,11 +5,13 @@ const PekerjaRouter = require("../routes/pekerja");
 const PerekrutRouter = require("../routes/perekrut");
 const ExperiencesRouter = require("../routes/experiences");
 const Users2Router = require("../routes/registerUsers");
+const SkillRouter = require("../routes/addSkill");
 router
   .use("/register", Users2Router)
   .use("/users", UsersRouter)
   .use("/pekerja", PekerjaRouter)
   .use("/perekrut", PerekrutRouter)
-  .use("/experiences", ExperiencesRouter);
+  .use("/experiences", ExperiencesRouter)
+  .use("/skill", SkillRouter);
 
 module.exports = router;
