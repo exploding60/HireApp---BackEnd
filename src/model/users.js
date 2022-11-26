@@ -69,18 +69,32 @@ const verification = (email) => {
     )
   );
 };
-const updatePerusahaan = (id, data) => {
-  const { company_name, bidang, domisili, deskripsi,ig,linkedin } = data;
+const updateUsersPerusahaan = (id, data) => {
+  const { name, email, phonenumber, company_name, bidang, domisili, deskripsi,ig,linkedin,tempat_kerja } = data;
   return Pool.query(
-    `UPDATE users SET company_name='${company_name}',bidang='${bidang}',domisili='${domisili}', deskripsi='${deskripsi}',ig='${ig}',linkedin='${linkedin}' WHERE id='${id}'`
+    `UPDATE users SET name='${name}',email='${email}',phonenumber=${phonenumber},company_name='${company_name}',bidang='${bidang}',domisili='${domisili}', deskripsi='${deskripsi}',ig='${ig}',linkedin='${linkedin}',tempat_kerja='${tempat_kerja}' WHERE id='${id}'`
   );
 };
-
+const updateUsersPekerja = (id, data) => {
+  const { name, bidang, domisili, deskripsi,tempat_kerja } = data;
+  return Pool.query(
+    `UPDATE users SET name='${name}',bidang='${bidang}',domisili='${domisili}', deskripsi='${deskripsi}',tempat_kerja='${tempat_kerja}' WHERE id='${id}'`
+  );
+};
+const selectDataPekerja = (id) => {
+  return Pool.query(`SELECT users.id,users.name,users.email,users.deskripsi,users.domisili,users.tempat_kerja FROM users WHERE users.id='${id}'`);
+};
+const selectDataPerekrut = (id) => {
+  return Pool.query(`SELECT users.id,users.name,users.email,users.deskripsi,users.domisili,users.bidang,users.linkedin,users.ig FROM users WHERE users.id='${id}'`);
+};
 module.exports = {
   createPerekrut,
   createPekerja,
   findEmail,
   verification,
   getusers,
-  updatePerusahaan
+  updateUsersPerusahaan,
+  updateUsersPekerja,
+  selectDataPekerja,
+  selectDataPerekrut
 };
