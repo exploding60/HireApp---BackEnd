@@ -6,7 +6,10 @@ router.post ('/pekerja',usersController.createPekerja)
 router.post ('/perekrut',usersController.createPerekrut)
 router.get ('/',usersController.getusers)
 router.post('/verif',usersController.otp)
-// router.put('/updateperusahaan/:id',usersController.updatePerusahaan)
-
+router.put('/updateusersperusahaan/:id',usersController.updateUsersPerusahaan)
+router.put('/updateuserspekerja/:id',usersController.updateUsersPekerja)
+router.get('/detailpekerja/:id',usersController.selectDataPekerja)
+router.get('/detailperekrut/:id',usersController.selectDataPerekrut)
+// router.put('/:id',UsersController.updatePerusahaan)
 
 module.exports = router

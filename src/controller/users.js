@@ -4,6 +4,8 @@ const {
   createPerekrut,
   findEmail,
   verification,
+  updateUsersPerusahaan,
+  updateUsersPekerja
 } = require("../model/users");
 const { response } = require("../middlewares/common");
 const { v4: uuidv4 } = require("uuid");
@@ -171,8 +173,15 @@ const usersController = {
       )
       .catch((err) => response(res, 404, false, err, "get data fail"));
   },
-  update: (req, res, next) => {
-    ModelProduct.updateData(req.params.id, req.body)
+  updateUsersPekerja: (req, res, next) => {
+    Modelusers.updateUsersPekerja(req.params.id, req.body)
+      .then((result) =>
+        res.send({ status: 200, message: `berhasil mengubah data` })
+      )
+      .catch((err) => res.send({ message: "error", err }));
+  },
+  updateUsersPerusahaan: (req, res, next) => {
+    Modelusers.updateUsersPerusahaan(req.params.id, req.body)
       .then((result) =>
         res.send({ status: 200, message: `berhasil mengubah data` })
       )
@@ -187,6 +196,20 @@ const usersController = {
         response(res, 404, false, err.routine, "delete data fail")
       );
   },
+  selectDataPekerja: (req, res, next) => {
+    Modelusers.selectDataPekerja(req.params.id)
+    .then((result) =>
+    response(res, 200, true, result.rows, "get data success")
+  )
+  .catch((err) => response(res, 404, false, err, "get data fail"));
+  },
+  selectDataPerekrut: (req, res, next) => {
+    Modelusers.selectDataPerekrut(req.params.id)
+    .then((result) =>
+    response(res, 200, true, result.rows, "get data success")
+  )
+  .catch((err) => response(res, 404, false, err, "get data fail"));
+  }
 };
 
 exports.usersController = usersController;
