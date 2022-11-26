@@ -69,6 +69,12 @@ const verification = (email) => {
     )
   );
 };
+const updatePerusahaan = (id, data) => {
+  const { company_name, bidang, domisili, deskripsi,ig,linkedin } = data;
+  return Pool.query(
+    `UPDATE users SET company_name='${company_name}',bidang='${bidang}',domisili='${domisili}', deskripsi='${deskripsi}',ig='${ig}',linkedin='${linkedin}' WHERE id='${id}'`
+  );
+};
 
 module.exports = {
   createPerekrut,
@@ -76,4 +82,5 @@ module.exports = {
   findEmail,
   verification,
   getusers,
+  updatePerusahaan
 };

@@ -4,6 +4,7 @@ const {
   createPerekrut,
   findEmail,
   verification,
+  updatePerusahaan
 } = require("../model/users");
 const { response } = require("../middlewares/common");
 const { v4: uuidv4 } = require("uuid");
@@ -171,8 +172,8 @@ const usersController = {
       )
       .catch((err) => response(res, 404, false, err, "get data fail"));
   },
-  update: (req, res, next) => {
-    ModelProduct.updateData(req.params.id, req.body)
+  updatePerusahaan: (req, res, next) => {
+    Modelusers.updatePerusahaan(req.params.id, req.body)
       .then((result) =>
         res.send({ status: 200, message: `berhasil mengubah data` })
       )
