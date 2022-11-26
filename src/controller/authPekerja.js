@@ -53,6 +53,7 @@ const UsersController = {
     }
 
     delete user.password;
+
     let payload = {
       email: user.email,
       id: user.id,

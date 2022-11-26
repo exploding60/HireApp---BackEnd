@@ -30,7 +30,7 @@ const detailWork = (id) => {
 const getAllWork = ({ id }) => {
   return new Promise((resolve, reject) => {
     Pool.query(
-      `SELECT id_work,role,company_name,description,join_date FROM work_experiences WHERE id_users = '${id}'`,
+      `SELECT id,role,company_name,description,join_date FROM work_experiences WHERE id_users = '${id}'`,
       (err, result) => {
         if (!err) {
           resolve(result.rows);

@@ -2,15 +2,15 @@ require("dotenv").config();
 const { response } = require("./../middlewares/common");
 const jwt = require("jsonwebtoken");
 const ModelSkill = require("./../model/addSkill");
-
+const key = process.env.JWT_KEY;
 const skillController = {
   insert: async (req, res) => {
     try {
       const { skill_name } = req.body;
-      //         let auth = req.headers.authorization;
-      //   let token = auth.split(" ")[1];
-      //   let decode = jwt.verify(token, key);
-      const id_users = "328def64-26dd-4c9a-98f6-aa6463e4ca3b";
+      let auth = req.headers.authorization;
+      let token = auth.split(" ")[1];
+      let decode = jwt.verify(token, key);
+      const id_users = decode.id;
 
       const data = {
         skill_name,
@@ -36,10 +36,10 @@ const skillController = {
   },
   getAllSkill: async (req, res, next) => {
     try {
-      //   let auth = req.headers.authorization;
-      //   let token = auth.split(" ")[1];
-      //   let decode = jwt.verify(token, key);
-      const id = "328def64-26dd-4c9a-98f6-aa6463e4ca3b";
+      let auth = req.headers.authorization;
+      let token = auth.split(" ")[1];
+      let decode = jwt.verify(token, key);
+      const id = decode.id;
 
       const result = await ModelSkill.getAllSkill({ id });
       response(res, 200, true, result, "get data success");
