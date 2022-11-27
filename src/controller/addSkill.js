@@ -3,6 +3,7 @@ const { response } = require("./../middlewares/common");
 const jwt = require("jsonwebtoken");
 const ModelSkill = require("./../model/addSkill");
 const key = process.env.JWT_KEY;
+
 const skillController = {
   insert: async (req, res) => {
     try {

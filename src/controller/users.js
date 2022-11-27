@@ -5,7 +5,7 @@ const {
   findEmail,
   verification,
   updateUsersPerusahaan,
-  updateUsersPekerja
+  updateUsersPekerja,
 } = require("../model/users");
 const { response } = require("../middlewares/common");
 const { v4: uuidv4 } = require("uuid");
@@ -110,7 +110,7 @@ const usersController = {
         let sendEmail = await email(
           data.email,
           otp,
-          `https://${Host}:${Port}/${email}/${otp}`,
+          `https://${Host}:3002/${email}/${otp}`,
           data.fullname
         );
         if (sendEmail == "email not sent!") {
@@ -140,16 +140,16 @@ const usersController = {
     }
   },
   otp: async (req, res, next) => {
-    console.log("email", req.body.email);
+    console.log("email", req.params.email);
     console.log("password", req.body.otp);
     let {
       rows: [users],
-    } = await findEmail(req.body.email);
+    } = await findEmail(req.params.email);
     if (!users) {
       return response(res, 404, false, null, " email not found");
     }
-    if (users.otp == req.body.otp) {
-      const result = await verification(req.body.email);
+    if (users.otp == req.params.otp) {
+      const result = await verification(req.params.email);
       return response(
         res,
         200,
@@ -198,18 +198,18 @@ const usersController = {
   },
   selectDataPekerja: (req, res, next) => {
     Modelusers.selectDataPekerja(req.params.id)
-    .then((result) =>
-    response(res, 200, true, result.rows, "get data success")
-  )
-  .catch((err) => response(res, 404, false, err, "get data fail"));
+      .then((result) =>
+        response(res, 200, true, result.rows, "get data success")
+      )
+      .catch((err) => response(res, 404, false, err, "get data fail"));
   },
   selectDataPerekrut: (req, res, next) => {
     Modelusers.selectDataPerekrut(req.params.id)
-    .then((result) =>
-    response(res, 200, true, result.rows, "get data success")
-  )
-  .catch((err) => response(res, 404, false, err, "get data fail"));
-  }
+      .then((result) =>
+        response(res, 200, true, result.rows, "get data success")
+      )
+      .catch((err) => response(res, 404, false, err, "get data fail"));
+  },
 };
 
 exports.usersController = usersController;

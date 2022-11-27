@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 module.exports = async (email, subject, url, name) => {
-//   const port = process.env.PORT;
-//   const host = process.env.HOST;
+  //   const port = process.env.PORT;
+  //   const host = process.env.HOST;
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -20,7 +20,7 @@ module.exports = async (email, subject, url, name) => {
       from: "Rizky Ganteng",
       to: email,
       subject: `"Thanks For Registering your Account"`,
-      text: `"Hi! This is your token ${subject}"`,
+      html: `"Hi! This is your verif click <a href=http://localhost:3002/register/verif/${email}/${subject}> Here</a>"`,
       //   html: "<div>
       // 				<h1>Email Confirmation</h1>
       //                 <h2>Hello ${name}</h2>
