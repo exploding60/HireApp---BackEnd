@@ -3,6 +3,7 @@ const { response } = require("./../middlewares/common");
 const jwt = require("jsonwebtoken");
 const ModelPortofolio = require("./../model/addPortofolio");
 const key = process.env.JWT_KEY;
+const cloudinary = require("../config/cloudinary");
 
 const portoController = {
   insert: async (req, res) => {
@@ -13,11 +14,17 @@ const portoController = {
       let decode = jwt.verify(token, key);
       const id_users = decode.id;
 
+      const image = await cloudinary.uploader.upload(req.file.path, {
+        folder: "toko",
+      });
+      req.body.photo = image.url;
+      const photo = image.url;
       const data = {
         name,
         url,
         type,
         id_users,
+        photo,
       };
 
       await ModelPortofolio.insertPorto(data);
@@ -27,6 +34,11 @@ const portoController = {
     }
   },
   update: async (req, res) => {
+    const image = await cloudinary.uploader.upload(req.file.path, {
+      folder: "toko",
+    });
+    // getting url for db
+    req.body.photo = image.url;
     ModelPortofolio.updatePorto(req.params.id, req.body)
       .then((result) =>
         res.send({
