@@ -30,8 +30,8 @@ const usersController = {
 
     let salt = bcrypt.genSaltSync(10);
     let password = bcrypt.hashSync(req.body.password);
-    // let password1 = req.body.password;
-    // let confirm = req.body.confirm;
+    let password1 = req.body.password;
+    let confirm = req.body.confirm;
 
     let data = {
       id: uuidv4(),
@@ -40,11 +40,12 @@ const usersController = {
       name: req.body.name,
       phonenumber: req.body.phonenumber,
 
-      // confirm ,
+      confirm,
       auth: req.body.auth,
       otp,
     };
-    // if (password1 !== confirm) return response (res, 404, false, null, "password tidak sesuai")
+    if (password1 !== confirm)
+      return response(res, 404, false, null, "password tidak sesuai");
     try {
       const result = await createPekerja(data);
       if (result) {
@@ -87,8 +88,8 @@ const usersController = {
 
     let salt = bcrypt.genSaltSync(10);
     let password = bcrypt.hashSync(req.body.password);
-    // let password1 = req.body.pw;
-    // let confirm = req.body.confirm;
+    let password1 = req.body.pw;
+    let confirm = req.body.confirm;
 
     let data = {
       id: uuidv4(),
@@ -98,11 +99,12 @@ const usersController = {
       phonenumber: req.body.phonenumber,
       jabatan: req.body.jabatan,
       company_name: req.body.company_name,
-      // confirm ,
+      confirm,
       auth: req.body.auth,
       otp,
     };
-    // if (password1 !== confirm) return response (res, 404, false, null, "password tidak sesuai")
+    if (password1 !== confirm)
+      return response(res, 404, false, null, "password tidak sesuai");
     try {
       const result = await createPerekrut(data);
       if (result) {

@@ -51,6 +51,9 @@ const UsersController = {
     if (!validation) {
       return response(res, 404, false, null, "login gagal password salah");
     }
+    if (user.auth == 0) {
+      return response(res, 404, false, null, "lbelum verif");
+    }
 
     delete user.password;
 

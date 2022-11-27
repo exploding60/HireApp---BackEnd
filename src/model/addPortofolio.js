@@ -16,7 +16,7 @@ const updatePorto = (id, data) => {
 const getAllPorto = ({ id }) => {
   return new Promise((resolve, reject) => {
     Pool.query(
-      `SELECT portofolio.id ,portofolio.name, portofolio.type, portofolio.link,portofolio.created_at from portofolio WHERE id_users = '${id}' AND portofolio.name ILIKE ('%${search}%') ORDER BY portofolio.name desc LIMIT 1 OFFSET 1`,
+      `SELECT portofolio.id ,portofolio.name, portofolio.type, portofolio.link,portofolio.created_at from portofolio WHERE id_users = '${id}' AND portofolio.name ILIKE ('%%')`,
       (err, result) => {
         if (!err) {
           resolve(result.rows);
