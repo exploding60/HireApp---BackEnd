@@ -7,6 +7,7 @@ const ExperiencesRouter = require("../routes/experiences");
 const Users2Router = require("../routes/registerUsers");
 const SkillRouter = require("../routes/addSkill");
 const portoRouter = require("../routes/addPortofolio");
+const editPhotoRouter = require("../routes/editPhotoUsers");
 router
   .use("/register", Users2Router)
   .use("/users", UsersRouter)
@@ -14,6 +15,6 @@ router
   .use("/perekrut", PerekrutRouter)
   .use("/experiences", ExperiencesRouter)
   .use("/skill", SkillRouter)
-  .use("/portofolio", portoRouter);
-
+  .use("/portofolio", portoRouter)
+  .use("/photo", editPhotoRouter);
 module.exports = router;
