@@ -6,5 +6,5 @@ const { experiencesControl } = require("./../controller/experiences");
 router.post("/", experiencesControl.insert);
 router.put("/:id", experiencesControl.update);
 router.get("/detail/:id", experiencesControl.detailWork);
-router.get("/", experiencesControl.getAllWork);
+router.get("/:id", experiencesControl.getAllWork);
 module.exports = router;

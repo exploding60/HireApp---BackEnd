@@ -27,7 +27,7 @@ const detailWork = (id) => {
   );
 };
 
-const getAllWork = ({ id }) => {
+const getAllWork = (id) => {
   return new Promise((resolve, reject) => {
     Pool.query(
       `SELECT id,role,company_name,description,join_date FROM work_experiences WHERE id_users = '${id}'`,
