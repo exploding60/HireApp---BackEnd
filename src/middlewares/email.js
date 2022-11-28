@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 module.exports = async (email, subject, url, name) => {
+  // const Host = process.env.
   //   const port = process.env.PORT;
   //   const host = process.env.HOST;
   try {
