@@ -6,12 +6,14 @@ const key = process.env.JWT_KEY;
 
 const skillController = {
   insert: async (req, res) => {
+    const id_users = req.params.id;
     try {
       const data = {
         skill_name,
+        id_users,
       };
 
-      await ModelSkill.insertSkill(req.params.id, data);
+      await ModelSkill.insertSkill(data);
       response(res, 200, true, data, "input data sukses");
     } catch (err) {
       return response(res, 404, false, err, "input data fail");
