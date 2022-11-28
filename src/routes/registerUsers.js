@@ -10,6 +10,8 @@ router.put("/updateusersperusahaan/:id", usersController.updateUsersPerusahaan);
 router.put("/updateuserspekerja/:id", usersController.updateUsersPekerja);
 router.get("/detailpekerja/:id", usersController.selectDataPekerja);
 router.get("/detailperekrut/:id", usersController.selectDataPerekrut);
+router.get("/home", usersController.getHomePekerja);
+router.get("/search",usersController.getSortPekerja)
 // router.put('/:id',UsersController.updatePerusahaan)
 
 module.exports = router;

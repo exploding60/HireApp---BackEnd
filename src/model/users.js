@@ -101,6 +101,14 @@ const selectDataPerekrut = (id) => {
     `SELECT users.id,users.company_name,users.email_perusahaan,users.deskripsi,users.domisili,users.bidang,users.linkedin,users.ig FROM users WHERE users.id='${id}'`
   );
 };
+const getHomePekerja = () => {
+  return Pool.query(
+    `SELECT id,name,bidang,domisili,image FROM users WHERE role='pekerja'`
+  );
+};
+const getSortPekerja = (sort,page,limit,search) => {
+  return Pool.query(`SELECT id,name,bidang,domisili,role FROM users WHERE role='pekerja' AND name ILIKE '%${search}%' ORDER BY name ${sort} limit ${limit} offset ${(page-1)*limit}`);
+}
 module.exports = {
   createPerekrut,
   createPekerja,
@@ -111,4 +119,6 @@ module.exports = {
   updateUsersPekerja,
   selectDataPekerja,
   selectDataPerekrut,
+  getHomePekerja,
+  getSortPekerja
 };

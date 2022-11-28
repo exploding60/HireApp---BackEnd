@@ -39,7 +39,6 @@ const usersController = {
       password,
       name: req.body.name,
       phonenumber: req.body.phonenumber,
-
       confirm,
       auth: req.body.auth,
       otp,
@@ -88,7 +87,7 @@ const usersController = {
 
     let salt = bcrypt.genSaltSync(10);
     let password = bcrypt.hashSync(req.body.password);
-    let password1 = req.body.pw;
+    let password1 = req.body.password;
     let confirm = req.body.confirm;
 
     let data = {
@@ -170,6 +169,24 @@ const usersController = {
   },
   getusers: (req, res, next) => {
     Modelusers.getusers()
+      .then((result) =>
+        response(res, 200, true, result.rows, "get data success")
+      )
+      .catch((err) => response(res, 404, false, err, "get data fail"));
+  },
+  getHomePekerja: (req, res, next) => {
+    Modelusers.getHomePekerja()
+      .then((result) =>
+        response(res, 200, true, result.rows, "get data success")
+      )
+      .catch((err) => response(res, 404, false, err, "get data fail"));
+  },
+  getSortPekerja: (req, res, next) => {
+        const sort = req.query.sort || 'asc'
+        const page = req.query.page || 1
+        const limit = req.query.limit || 2
+        const search = req.query.search || ''
+    Modelusers.getSortPekerja(sort,page,limit,search)
       .then((result) =>
         response(res, 200, true, result.rows, "get data success")
       )
