@@ -52,7 +52,7 @@ const UsersController = {
       return response(res, 404, false, null, "login gagal password salah");
     }
     if (user.auth == 0) {
-      return response(res, 404, false, null, "lbelum verif");
+      return response(res, 402, false, null, "belum verif");
     }
 
     delete user.password;

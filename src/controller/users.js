@@ -44,7 +44,7 @@ const usersController = {
       otp,
     };
     if (password1 !== confirm)
-      return response(res, 404, false, null, "password tidak sesuai");
+      return response(res, 417, false, null, "password tidak sesuai");
     try {
       const result = await createPekerja(data);
       if (result) {
@@ -103,7 +103,7 @@ const usersController = {
       otp,
     };
     if (password1 !== confirm)
-      return response(res, 404, false, null, "password tidak sesuai");
+      return response(res, 417, false, null, "password tidak sesuai");
     try {
       const result = await createPerekrut(data);
       if (result) {
@@ -182,11 +182,11 @@ const usersController = {
       .catch((err) => response(res, 404, false, err, "get data fail"));
   },
   getSortPekerja: (req, res, next) => {
-        const sort = req.query.sort || 'asc'
-        const page = req.query.page || 1
-        const limit = req.query.limit || 2
-        const search = req.query.search || ''
-    Modelusers.getSortPekerja(sort,page,limit,search)
+    const sort = req.query.sort || "asc";
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 2;
+    const search = req.query.search || "";
+    Modelusers.getSortPekerja(sort, page, limit, search)
       .then((result) =>
         response(res, 200, true, result.rows, "get data success")
       )
