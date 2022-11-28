@@ -6,8 +6,10 @@ const key = process.env.JWT_KEY;
 
 const skillController = {
   insert: async (req, res) => {
-    const id_users = req.params.id;
     try {
+      const { skill_name } = req.body;
+      const id_users = req.params.id;
+
       const data = {
         skill_name,
         id_users,
