@@ -6,17 +6,17 @@ const cloudinary = require("../config/cloudinary");
 
 const photoController = {
   update: async (req, res) => {
-    let auth = req.headers.authorization;
-    let token = auth.split(" ")[1];
-    let decode = jwt.verify(token, key);
-    const id_user = decode.id;
+    // let auth = req.headers.authorization;
+    // let token = auth.split(" ")[1];
+    // let decode = jwt.verify(token, key);
+    // const id_user = decode.id;
 
     const image = await cloudinary.uploader.upload(req.file.path, {
       folder: "toko",
     });
     // getting url for db
     req.body.photo = image.url;
-    ModelPhoto.updatePhoto(id_user, req.body)
+    ModelPhoto.updatePhoto(req.params.id, req.body)
       .then((result) =>
         res.send({
           status: 200,

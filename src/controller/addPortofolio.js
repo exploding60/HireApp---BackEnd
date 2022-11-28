@@ -51,10 +51,10 @@ const portoController = {
   },
   getAllPorto: async (req, res, next) => {
     try {
-      let auth = req.headers.authorization;
-      let token = auth.split(" ")[1];
-      let decode = jwt.verify(token, key);
-      const id = decode.id;
+      // let auth = req.headers.authorization;
+      // let token = auth.split(" ")[1];
+      // let decode = jwt.verify(token, key);
+      // const id = decode.id;
 
       const result = await ModelPortofolio.getAllPorto(req.params.id);
       response(res, 200, true, result, "get data success");

@@ -47,10 +47,10 @@ const experiencesControl = {
   },
   getAllWork: async (req, res, next) => {
     try {
-      let auth = req.headers.authorization;
-      let token = auth.split(" ")[1];
-      let decode = jwt.verify(token, key);
-      const id = decode.id;
+      // let auth = req.headers.authorization;
+      // let token = auth.split(" ")[1];
+      // let decode = jwt.verify(token, key);
+      // const id = decode.id;
 
       const result = await ModelExperiences.getAllWork(req.params.id);
       response(res, 200, true, result, "get data success");
