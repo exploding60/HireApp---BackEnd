@@ -5,7 +5,7 @@ const upload = require("../middlewares/upload");
 // router.post("/", PekerjaController.insert);
 router.post("/", upload.single("photo"), portoController.insert);
 router.put("/:id", upload.single("photo"), portoController.update);
-router.get("/", portoController.getAllPorto);
+router.get("/:id", portoController.getAllPorto);
 router.delete("/:id", portoController.delete);
 // router.put("/:id", experiencesControl.update);
 // router.get("/detail/:id", experiencesControl.detailWork);

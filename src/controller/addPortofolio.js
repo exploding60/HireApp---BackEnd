@@ -56,7 +56,7 @@ const portoController = {
       let decode = jwt.verify(token, key);
       const id = decode.id;
 
-      const result = await ModelPortofolio.getAllPorto({ id });
+      const result = await ModelPortofolio.getAllPorto(req.params.id);
       response(res, 200, true, result, "get data success");
     } catch (err) {
       return response(res, 404, false, err, "get data faill");

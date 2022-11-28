@@ -13,7 +13,7 @@ const updatePorto = (id, data) => {
     `UPDATE portofolio SET name='${name}', type='${type}', link='${url}', image='${photo}' WHERE id='${id}'`
   );
 };
-const getAllPorto = ({ id }) => {
+const getAllPorto = (id) => {
   return new Promise((resolve, reject) => {
     Pool.query(
       `SELECT portofolio.id ,portofolio.name, portofolio.type, portofolio.link,portofolio.created_at,portofolio.image from portofolio WHERE id_users = '${id}' AND portofolio.name ILIKE ('%%')`,
