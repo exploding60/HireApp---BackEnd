@@ -8,10 +8,8 @@ const cloudinary = require("../config/cloudinary");
 const portoController = {
   insert: async (req, res) => {
     try {
-      // const { name, url, type } = req.body;
-      // let auth = req.headers.authorization;
-      // let token = auth.split(" ")[1];
-      // let decode = jwt.verify(token, key);
+      const { name, url, type } = req.body;
+
       const id_users = req.params.id;
 
       const image = await cloudinary.uploader.upload(req.file.path, {
