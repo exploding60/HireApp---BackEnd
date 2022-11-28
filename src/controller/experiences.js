@@ -8,10 +8,10 @@ const experiencesControl = {
   insert: async (req, res, next) => {
     try {
       const { role, company_name, description, join_date } = req.body;
-      let auth = req.headers.authorization;
-      let token = auth.split(" ")[1];
-      let decode = jwt.verify(token, key);
-      const id_pekerja = decode.id;
+      // let auth = req.headers.authorization;
+      // let token = auth.split(" ")[1];
+      // let decode = jwt.verify(token, key);
+      const id_pekerja = req.params.id;
 
       const data = {
         role,

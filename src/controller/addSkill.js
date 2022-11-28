@@ -7,18 +7,11 @@ const key = process.env.JWT_KEY;
 const skillController = {
   insert: async (req, res) => {
     try {
-      const { skill_name } = req.body;
-      let auth = req.headers.authorization;
-      let token = auth.split(" ")[1];
-      let decode = jwt.verify(token, key);
-      const id_users = decode.id;
-
       const data = {
         skill_name,
-        id_users,
       };
 
-      await ModelSkill.insertSkill(data);
+      await ModelSkill.insertSkill(req.params.id, data);
       response(res, 200, true, data, "input data sukses");
     } catch (err) {
       return response(res, 404, false, err, "input data fail");
