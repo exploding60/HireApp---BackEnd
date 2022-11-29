@@ -13,7 +13,7 @@ const updateSkill = (id, data) => {
     `UPDATE skill SET skill_name='${skill_name}' WHERE id_users ='${id}'`
   );
 };
-const getAllSkill = ({ id }) => {
+const getAllSkill = (id) => {
   return new Promise((resolve, reject) => {
     Pool.query(
       `SELECT id_skill,skill_name from skill WHERE id_users = '${id}'`,

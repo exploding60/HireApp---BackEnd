@@ -21,7 +21,7 @@ module.exports = async (email, subject, url, name) => {
       from: "Rizky Ganteng",
       to: email,
       subject: `"Thanks For Registering your Account"`,
-      html: `"Hi! This is your verif click <a href=http://localhost:3002/register/verif/${email}/${subject}> Here</a>"`,
+      html: `"Hi! This is your verif click <a href=https://rich-gold-gorilla-wear.cyclic.app/register/verif/${email}/${subject}> Here</a>"`,
       //   html: "<div>
       // 				<h1>Email Confirmation</h1>
       //                 <h2>Hello ${name}</h2>
